@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :companies
   end
 
-  resources :events 
+  resources :events, only: [:index]
 
   resources :news
 
