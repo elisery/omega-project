@@ -1,0 +1,26 @@
+<div class="container">
+  <h2>News Sources</h2>
+
+  <section class="transaction-list mt-5">
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th scope="col">Source</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @news_sources.each do |news_source| %>
+        <tr>
+          <th scope="row"></th>
+            <td>
+              <%= news_source.title %>
+            </td>
+            <td>
+            </td>  
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+</div>
