@@ -15,11 +15,25 @@
  */
 
  @import "bootstrap";
- @import "news";
 
-footer {
-    position: fixed;
-    height: 100px;
-    bottom: 0;
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+}
+.calendar {
+    width: 900px;
+    height: 600px;
+    border: black solid 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+.form-control {
     width: 100%;
+    margin: 20px;
 }
