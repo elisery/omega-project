@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   #   resources :users, [:edit, :update, :destroy]
   # end
 
-  resources :directory do
+  resources :directories do
     resources :companies
   end
 

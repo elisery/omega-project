@@ -42,6 +42,10 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 gem 'popper_js', '~> 1.12.9'
 
+# REST calls
+gem 'rest-client'
+gem 'httparty'
+
 group :development, :test do
   gem 'pry'
   gem 'pry-rails'
