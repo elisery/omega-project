@@ -3,7 +3,7 @@ class Company < ApplicationRecord
   has_many :taggings, dependent: :destroy 
   has_many :users
 
-  validates(:name, presence: true, unqiueness: true)
+  validates(:name, presence: true, uniqueness: true)
   validates(:website_url, unqiueness: true)
 
   validates(:number_employees, 

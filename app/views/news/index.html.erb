@@ -1,0 +1,27 @@
+<div class="container mt-3">
+    
+      <% @news_items.each do |news| %>
+        <div class="row mt-4">
+          <div class="col-3">
+            <img src=<%= news["urlToImage"]%> />
+          </div>
+          <div class="col-8">
+            <%= link_to(
+              news["title"], 
+              news["url"]
+            ) %><br/>
+            <p>
+              <%= time_ago_in_words(news["publishedAt"]) %> ago
+              - Source: 
+              <%= link_to(
+                news["source"]["name"], 
+                news["url"]
+              ) %>
+            </p>
+            <p><%= news["description"]%></p>
+          </div>
+        </div>
+      <% end %>
+   
+  
+</div>
