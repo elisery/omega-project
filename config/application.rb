@@ -29,5 +29,11 @@ module OmegaProject
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    config.generators do |g|
+      # don't generate helper files
+      g.helper = false
+      # don't generate coffeescript and scss files
+      g.assets = false
+    end
   end
 end
