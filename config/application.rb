@@ -35,5 +35,6 @@ module OmegaProject
       # don't generate coffeescript and scss files
       g.assets = false
     end
+    config.beginning_of_week = :sunday
   end
 end

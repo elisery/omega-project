@@ -27,6 +27,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'cowsay'
 gem 'faker'
+gem "simple_calendar", "~> 2.0"
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
