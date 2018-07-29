@@ -1,5 +1,5 @@
 <div class="container">
-  <%= form_for( @technology, :url => admin_technologies_path, :method => :post) do |f| %>
+  <%= form_for @technology, :url => admin_technologies_path, :method => :post do |f| %>
 
     <div>
       <%= f.label(:name) %>
@@ -17,7 +17,7 @@
         <th scope="col">Action</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody id="tag-table">
       <% @technologies.each do |t| %>
       <tr id="<%= t.id %>">
         <td>
@@ -25,11 +25,13 @@
         </td>
         <td>
           <p>
-            <%= link_to(
-              "Remove",
-              admin_technologies_path(t.id),
-              method: :delete
-            ) %>
+            <%= link_to 'Remove', 
+              admin_technology_path(t.id), 
+              method: :delete, 
+              data: { confirm: 'Are you sure?' }, 
+              :remote => true, 
+              :class => 'delete_technology' 
+            %> 
           </p>
         </td>
       </tr>

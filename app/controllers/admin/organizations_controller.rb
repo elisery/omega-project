@@ -4,6 +4,16 @@ class Admin::OrganizationsController < ApplicationController
     # render admin_technologies_path
   end
 
+  def destroy
+    @company = Company.find(params[:id])
+    @company.destroy
+
+    respond_to do | format |
+    format.html { redirect_to admin_organizations_path }
+    format.json { head :no_content }
+    format.js   { render :layout => false }
+    end
+  end
 
   private
   

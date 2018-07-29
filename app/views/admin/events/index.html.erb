@@ -17,7 +17,7 @@
         <th scope="col">Action</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody id="group-table">
       <% @meetup_groups.each do |m| %>
       <tr id="<%= m.id %>">
         <td>
@@ -28,7 +28,10 @@
             <%= link_to(
               "Remove",
               admin_event_path(m.id),
-              method: :delete
+              method: :delete,
+              data: { confirm: 'Are you sure?' },
+              :remote => true,
+              :class => 'delete_group'
             ) %>
           </p>
         </td>
