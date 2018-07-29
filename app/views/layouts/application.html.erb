@@ -15,7 +15,7 @@
         <a class="navbar-brand text-dark" href="/directory">{ company logo }</a>
         <div class="collapse navbar-collapse topnav justify-content-end">
           <ul class="nav navbar-nav navbar-right ">       
-            <li class="nav-item mr-4"><a class="nav-link text-dark"<%= link_to 'Directory', directory_index_path %></a></li>
+            <li class="nav-item mr-4"><a class="nav-link text-dark"<%= link_to 'Directory', home_path %></a></li>
             <li class="nav-item mr-4"><a class="nav-link text-dark"<%= link_to 'Events', events_path %></a></li>
             <li class="nav-item mr-4"><a class="nav-link text-dark"<%= link_to 'News', news_index_path %></a></li>
           <ul>
@@ -23,7 +23,21 @@
       </nav>
     </header>
 
-    <!-- Footer -->
+    <div class="container-fluid">
+      <div style="margin-top: 90px;">
+        <% flash.each do |type, message| %>
+          <div class="alert alert-<%= type %> alert-dismissible fade show">
+            <%= message %>
+          </div>
+        <% end %>
+
+        <%= yield %>
+      </div>
+    </div>
+    
+  </body>
+
+  <!-- Footer -->
     <footer class="page-footer font-small unique-color-dark pt-4">
         <div class="footer">
           <ul class="list-unstyled list-inline text-right py-2 mr-4">
@@ -39,18 +53,6 @@
             </li>
           </ul>
         </div>
-      </footer>
-
-    <div class="container-fluid">
-      <div style="margin-top: 90px;">
-        <% flash.each do |type, message| %>
-          <div class="alert alert-<%= type %> alert-dismissible fade show">
-            <%= message %>
-          </div>
-        <% end %>
-
-        <%= yield %>
-      </div>
-    </div>
-  </body>
+    </footer>
+    
 </html>

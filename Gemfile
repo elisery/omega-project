@@ -29,6 +29,9 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'cowsay'
 gem 'faker'
+gem 'filterrific'
+gem 'kaminari'
+gem 'will_paginate', '~> 3.1.0'
 gem "simple_calendar", "~> 2.0"
 gem 'faraday'
 

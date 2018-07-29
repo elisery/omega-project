@@ -1,0 +1,26 @@
+<div id="filterrific_results">
+  <div>
+    <%= page_entries_info companies%>
+  </div>
+  <div class="row mx-1">
+    <% companies.each do |c| %>
+        <div class="col-xs-12 col-md-6 col-lg-4">
+            <div class="card mb-3">
+            <div class="card-body">
+                <img src="<%=c.logo_url %>" height="100" width="100">
+                <h5 class="card-title"><%= c.name%></h5>
+                <p class= "card-text mb-2"><%= c.address %></p>
+                <p class= "card-text mb-2"><%= c.tech_team_size %></p>
+                <p>
+                <small>
+                    <strong>Tags:</strong>
+                    <%= c.tags.order(name: :asc).map{ |t| t.humanized_name }.join(", ") %>
+                </small>
+                </p>
+            </div>
+            </div> 
+        </div>
+    <% end %>         
+  </div>
+</div>
+<%= will_paginate companies %>
