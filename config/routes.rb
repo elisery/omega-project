@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :news
 
   resource :session, only: [:new, :create, :destroy]
+  # resource :about, only: [:new]
   resources :users, only: [:new, :create]
 
   get('/about', { to: 'about#index' })
