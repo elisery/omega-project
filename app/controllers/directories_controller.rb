@@ -1,20 +1,5 @@
 class DirectoriesController < ApplicationController
     def index
-<<<<<<< HEAD
-        @filterrific = initialize_filterrific(
-            Company,
-            params[:filterrific],
-            select_options: {
-                with_tag: Tag.options_for_select,
-                with_team_size: Company.team_size_to_select
-            },
-            :persistence_id => false
-        ) or return
-        @companies = @filterrific.find.page(params[:page])
-        respond_to do |format|
-            format.html
-            format.js
-=======
         @search_term = ""
         if params['search_text']
             @search_term = params['search_text']
@@ -44,7 +29,6 @@ class DirectoriesController < ApplicationController
                     puts @team_size_arr
                 end
             end
->>>>>>> 8318404a06f5c8ce643a92ba3316eebf609bff61
         end
     end
 end
