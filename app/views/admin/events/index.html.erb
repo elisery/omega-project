@@ -1,5 +1,14 @@
 <div class="container">
   <h2>Events</h2>
+  <%= form_for( @meetup_group, :url => admin_events_path, :method => :post) do |f| %>
+
+    <div>
+      <%= f.label("Meetup ID") %>
+      <%= f.text_field(:name) %>
+      <%= f.submit %>
+    </div>
+  <% end %>
+
   
   <table class="table table-borderless">
     <thead>
@@ -9,7 +18,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @meetup_group.each do |m| %>
+      <% @meetup_groups.each do |m| %>
       <tr id="<%= m.id %>">
         <td>
           <%= m.name %>

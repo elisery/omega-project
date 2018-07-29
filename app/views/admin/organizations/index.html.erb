@@ -1,6 +1,7 @@
 <div class="container">
   <h2>Organizations</h2>
-  
+  <a class="btn btn-danger" href="/directory/new" role="button">Add</a>
+
   <table class="table table-borderless">
     <thead>
       <tr>
@@ -10,7 +11,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @company.each do |c| %>
+      <% @companies.each do |c| %>
       <tr id="<%= c.id %>">
         <td>
           <%= c.name %>
