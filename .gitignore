@@ -168,6 +168,8 @@ bower.json
 # Ignore node_modules
 
 
+config/initializers/api_keys.rb
+
 
 # End of https://www.gitignore.io/api/node,rails,linux,macos/public/packs
 /public/packs-test

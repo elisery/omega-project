@@ -1,5 +1,10 @@
 class Admin::OrganizationsController < ApplicationController
   def index
-    @company = Company.all
+    @companies = Company.all 
+    # render admin_technologies_path
   end
+
+
+  private
+  
 end
