@@ -1,4 +1,7 @@
 class Admin::TechnologiesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :authorize_admin!
+  
   def index
     @technologies = Tag.all 
     # render admin_technologies_path

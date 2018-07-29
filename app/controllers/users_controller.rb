@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     
         if @user.save
           session[:user_id] = @user.id
-          redirect_to directory_index_path
+          redirect_to home_path
         else
           render :new
         end

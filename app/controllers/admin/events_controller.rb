@@ -1,5 +1,7 @@
 class Admin::EventsController < ApplicationController
-
+  before_action :authenticate_user!
+  before_action :authorize_admin!
+  
   def index
     @meetup_groups = MeetupGroup.all 
     # render admin_technologies_path

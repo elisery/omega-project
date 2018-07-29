@@ -1,4 +1,7 @@
 class Admin::OrganizationsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :authorize_admin!
+  
   def index
     @companies = Company.all 
     # render admin_technologies_path

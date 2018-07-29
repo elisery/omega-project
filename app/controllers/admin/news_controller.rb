@@ -1,4 +1,7 @@
 class Admin::NewsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :authorize_admin!
+  
   def index
     @news_sources = NewsSource.all
     @news_source = NewsSource.new 
