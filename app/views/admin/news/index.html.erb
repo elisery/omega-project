@@ -1,7 +1,7 @@
 <div class="container">
   <h2>News Sources</h2>
 
-  <%= form_for(@news_source, :url=> admin_news_index_path, :method=> :post) do |f| %>
+  <%= form_for @news_source, :url=> admin_news_index_path, :method=> :post do |f| %>
   <div class="form-row">
     <% if @news_source.errors.present? %>
       <p>
@@ -24,7 +24,7 @@
         <th scope="col">Action</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody id="news-table">
       <% @news_sources.each do |news_source| %>
       <tr id="<%= news_source.id %>">
         <td>
@@ -32,11 +32,15 @@
         </td>
         <td>
           <p>
-            <%= link_to(
-              "Remove",
-              admin_news_path(news_source.id),
-              method: :delete
-            ) %>
+          
+            <%= link_to 'Remove', 
+              admin_news_path(news_source.id), 
+              method: :delete, 
+              data: { confirm: 'Are you sure?' }, 
+              :remote => true, 
+              :class => 'delete_news_source' 
+            %> 
+
           </p>
         </td>
       </tr>
@@ -44,3 +48,4 @@
     </tbody>
   </table>
 </div>
+
