@@ -1,7 +1,10 @@
 class Tag < ApplicationRecord
 
+<<<<<<< HEAD
+=======
     # belongs_to company, optional: true
 
+>>>>>>> 8318404a06f5c8ce643a92ba3316eebf609bff61
     validates :name, presence: true, uniqueness: true
     before_validation :downcase_name
   
@@ -12,6 +15,9 @@ class Tag < ApplicationRecord
         name&.humanize
     end
 
+    def self.options_for_select
+        order('LOWER(name)').map { |e| [e.humanized_name, e.id] }
+    end
 
     private
     def downcase_name
