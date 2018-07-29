@@ -24,18 +24,23 @@
     flex-direction: column;
     margin: 20px;
 }
+
+h1 {
+    text-align: center;
+}
+
 .calendar {
-    width: 900px;
-    height: 600px;
-    border: black solid 3px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: auto;
 }
 
-
 .form-control {
     width: 100%;
     margin: 20px;
+}
+
+ul {
+    list-style: none;
 }
