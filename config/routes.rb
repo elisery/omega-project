@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace :admin do
     resources :dashboard, only: [:index]
-    resources :news, only: [:index, :create, :destroy]
+    resources :news
     resources :events, only: [:index, :create, :destroy]
     resources :technologies, only: [:index, :create, :destroy]
     resources :organizations
