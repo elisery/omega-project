@@ -10,48 +10,15 @@
     <%= javascript_pack_tag 'application' %>
   </head>
 
-  <body style="margin-bottom: 90px;">
-    <header>
-      <nav class="navbar navbar-default fixed-top navbar-reverse navbar-expand-sm navbar-light bg-light border-bottom-2">
-        <a class="navbar-brand text-dark" href="/directory">{ company logo }</a>
-        <div class="collapse navbar-collapse topnav justify-content-end">
-          <ul class="nav navbar-nav navbar-right ">       
-            <li class="nav-item mr-4"><a class="nav-link text-dark"<%= link_to 'Directory', directory_index_path %></a></li>
-            <li class="nav-item mr-4"><a class="nav-link text-dark"<%= link_to 'Events', events_path %></a></li>
-            <li class="nav-item mr-4"><a class="nav-link text-dark"<%= link_to 'News', news_index_path %></a></li>
-          <ul>
-        </div>
-      </nav>
-    </header>
+  <body>
+  <nav>
+  <%= link_to 'New Organisation', new_company_path %>
 
-    <!-- Footer -->
-    <footer class="page-footer font-small unique-color-dark pt-4">
-        <div class="footer">
-          <ul class="list-unstyled list-inline text-right py-2 mr-4">
-            <li class="list-inline-item">
-              <small class="mb-1">Built and maintained by student from 
-              <a href="https://www.codecore.ca/">Codecore</a>
-              </small>
-            </li>
-            <li class="list-inline-item float-left ml-4">
-              <a href="#!" class="btn btn-outline-dark btn-rounded">Sign Up!</a>
-              <a href="#!" class="btn btn-outline-dark btn-rounded">Sign In!</a>
-              <a href="#!" class="btn btn-outline-dark btn-rounded">About</a>
-            </li>
-          </ul>
-        </div>
-      </footer>
+  
 
-    <div class="container-fluid">
-      <div style="margin-top: 90px;">
-        <% flash.each do |type, message| %>
-          <div class="alert alert-<%= type %> alert-dismissible fade show">
-            <%= message %>
-          </div>
-        <% end %>
+  
+  </nav>
 
-        <%= yield %>
-      </div>
-    </div>
+    <%= yield %>
   </body>
 </html>
