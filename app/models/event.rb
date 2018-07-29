@@ -7,5 +7,8 @@ class Event < ApplicationRecord
   validates :event_url, presence: true
   validates :time, presence: true
 
+  def self.search(search)
+    where("title ILIKE ?", "%#{search}%")
+  end
 
 end
