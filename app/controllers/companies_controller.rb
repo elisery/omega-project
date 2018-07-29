@@ -19,7 +19,24 @@ class CompaniesController < ApplicationController
         @company = Company.find params[:id]
     end
 
+    def edit
+        @company = Company.find params[:id]
+    end
+
+    def update
+        if @company.update(company_params)
+            redirect_to admin_organizations_path
+          else
+            render :edit
+        end
+    end
+
+    def destroy
+        @company.destroy
+        redirect_to admin_organizations_path
+    end
+
     def company_params
-        params.require(:company).permit(:name, :address, :overview, :number_employees, :tech_team_size, :website_url, :twitter, :logo_url, :manager, tag_ids: [])
+        params.require(:company).permit(:name, :address, :overview, :number_employees, :tech_team_size, :website_url, :twitter, :logo_url, :manager, :published, tag_ids: [])
     end
 end

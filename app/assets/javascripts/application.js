@@ -18,6 +18,7 @@
 
 //= require jquery3
 //= require chosen-jquery
+//= require filterrific/filterrific-jquery
 //= require popper
 //= require bootstrap-sprockets
 //= require_tree .
