@@ -1,19 +1,19 @@
 class Admin::NewsController < ApplicationController
   def index
-    @news_source = NewsSource.all
+    @news_sources = NewsSource.all
+    @news_source = NewsSource.new 
   end
   
-  def new
-    @news_source = NewsSource.new
-  end
-
   def create
-    @news_source = NewsSource.new news_params
+    @news_source = NewsSource.new news_source_params
 
-    if @news.save
-      redirect_to admin_news_index_path
+    if @news_source.save
+      flash[:success] = "News source saved"
+    else
+      flash[:error] = "News source already exists"
+      
     end
-
+    redirect_to admin_news_index_path
   end
 
   def destroy
@@ -29,7 +29,7 @@ class Admin::NewsController < ApplicationController
 
   private
   def news_source_params
-    params.require(:news).permit(:source)
+    params.require(:news_source).permit(:source)
   end
   
 end

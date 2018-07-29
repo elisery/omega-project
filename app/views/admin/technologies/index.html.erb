@@ -1,4 +1,13 @@
 <div class="container">
+  <%= form_for( @technology, :url => admin_technologies_path, :method => :post) do |f| %>
+
+    <div>
+      <%= f.label(:name) %>
+      <%= f.text_field(:name) %>
+    <%= f.submit %>
+    </div>
+  <% end %>
+
   <h2>Technologies</h2>
   
   <table class="table table-borderless">
@@ -9,7 +18,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @tag.each do |te| %>
+      <% @technologies.each do |t| %>
       <tr id="<%= t.id %>">
         <td>
           <%= t.name %>
