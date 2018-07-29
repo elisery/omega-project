@@ -1,15 +1,17 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    resources :news, only: [:create, :destroy]
-    resources :events, only: [:create, :destroy]
-    resources :technologies, only: [:create, :destroy]
-    resources :organizations
-    resources :users, [:edit, :update, :destroy]
-  end
+  # namespace :admin do
+  #   resources :news, only: [:create, :destroy]
+  #   resources :events, only: [:create, :destroy]
+  #   resources :technologies, only: [:create, :destroy]
+  #   resources :organizations
+  #   resources :users, [:edit, :update, :destroy]
+  # end
 
-  resources :directory do
-    resources :companies
-  end
+  # resources :directories do
+   
+  # end
+
+  resources :companies
 
   resources :events 
 
@@ -19,5 +21,6 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
 
   get('/about', { to: 'about#index' })
+  get('/', { to: 'directories#index', as: 'home' })
 
 end

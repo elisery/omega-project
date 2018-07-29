@@ -1,6 +1,6 @@
 class Tag < ApplicationRecord
 
-    belongs_to company, optional: true
+    # belongs_to company, optional: true
 
     validates :name, presence: true, uniqueness: true
     before_validation :downcase_name
