@@ -1,0 +1,30 @@
+<div class="container">
+  <h2>Events</h2>
+  
+  <table class="table table-borderless">
+    <thead>
+      <tr>
+        <th scope="col">Source</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @meetup_group.each do |m| %>
+      <tr id="<%= m.id %>">
+        <td>
+          <%= m.name %>
+        </td>
+        <td>
+          <p>
+            <%= link_to(
+              "Remove",
+              admin_event_path(m.id),
+              method: :delete
+            ) %>
+          </p>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -46,6 +46,9 @@ gem 'popper_js', '~> 1.12.9'
 gem 'rest-client'
 gem 'httparty'
 
+# Webpacker
+gem 'webpacker'
+
 group :development, :test do
   gem 'pry'
   gem 'pry-rails'

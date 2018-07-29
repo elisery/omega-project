@@ -4,7 +4,7 @@ class Company < ApplicationRecord
   has_many :users
 
   validates(:name, presence: true, uniqueness: true)
-  validates(:website_url, unqiueness: true)
+  validates(:website_url, uniqueness: true)
 
   validates(:number_employees, 
     numericality: {

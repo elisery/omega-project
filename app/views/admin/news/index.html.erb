@@ -1,0 +1,47 @@
+<div class="container">
+  <h2>News Sources</h2>
+
+  <%= form_with(model: @news_source) do |f| %>
+ 
+  <div class="form-row">
+    <% if @news_source.errors.present? %>
+      <p>
+        <%= @news_source.errors.full_messages.join(', ') %>
+      </p>
+    <% end %>
+    <div class="col-4">
+      <%= f.text_field(:source, class:"form-control", placeholder:"Input source") %>
+    </div>
+    <div class="col-auto mb-3">
+      <%= f.submit value:"Add", class:"btn btn-primary" %>
+    </div>  
+  </div>
+  <% end %>
+  
+  <table class="table table-borderless">
+    <thead>
+      <tr>
+        <th scope="col">Source</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @news_source.each do |news_source| %>
+      <tr id="<%= news_source.id %>">
+        <td>
+          <%= news_source.source %>
+        </td>
+        <td>
+          <p>
+            <%= link_to(
+              "Remove",
+              admin_news_path(news_source.id),
+              method: :delete
+            ) %>
+          </p>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
