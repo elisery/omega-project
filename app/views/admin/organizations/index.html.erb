@@ -1,0 +1,34 @@
+<div class="container">
+  <h2>Organizations</h2>
+  
+  <table class="table table-borderless">
+    <thead>
+      <tr>
+        <th scope="col">Organization Name</th>
+        <th scope="col">Published?</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @company.each do |c| %>
+      <tr id="<%= c.id %>">
+        <td>
+          <%= c.name %>
+        </td>
+        <td>
+          <%= c.published %>
+        </td>
+        <td>
+          <p>
+            <%= link_to(
+              "Remove",
+              admin_organizations_path(c.id),
+              method: :delete
+            ) %>
+          </p>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
