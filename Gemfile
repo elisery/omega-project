@@ -30,6 +30,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'cowsay'
 gem 'faker'
 gem "simple_calendar", "~> 2.0"
+gem 'faraday'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -47,6 +48,7 @@ gem 'popper_js', '~> 1.12.9'
 # REST calls
 gem 'rest-client'
 gem 'httparty'
+gem 'meetup_client'
 
 # Webpacker
 gem 'webpacker'
