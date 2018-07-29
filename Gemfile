@@ -15,6 +15,8 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
+gem 'chosen-rails'
+gem 'jquery-turbolinks'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -28,6 +30,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'cowsay'
 gem 'faker'
 gem "simple_calendar", "~> 2.0"
+gem 'faraday'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -45,6 +48,7 @@ gem 'popper_js', '~> 1.12.9'
 # REST calls
 gem 'rest-client'
 gem 'httparty'
+gem 'meetup_client'
 
 # Webpacker
 gem 'webpacker'

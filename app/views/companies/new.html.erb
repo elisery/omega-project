@@ -1,0 +1,69 @@
+<h1>New Company</h1>
+
+<%= form_for(@company) do |f| %>
+    <% if @company.errors.present? %>
+      <p>
+        <%= @company.errors.full_messages.join(', ') %>
+      </p>
+    <% end %>
+  
+    <div>
+      <%= f.label(:name) %>
+      <%= f.text_field(:name) %>
+    </div>
+  
+    <div>
+      <%= f.label(:address) %>
+      <%= f.text_area(:address) %>
+    </div>
+
+    <div>
+      <%= f.label(:overview) %>
+      <%= f.text_area(:overview) %>
+    </div>
+
+    <div>
+      <%= f.label(:number_employees) %>
+      <%= f.text_field(:number_employees) %>
+    </div>
+
+    <div>
+      <%= f.label(:tech_team_size) %>
+      <%= f.text_field(:tech_team_size) %>
+    </div>
+
+    <div>
+      <%= f.label(:website_url) %>
+      <%= f.text_area(:website_url) %>
+    </div>
+
+    
+    <div>
+    <%= f.label(:tags) %>
+    <%= f.collection_select(
+      :tag_ids,
+      Tag.order(name: :asc), 
+      :id, 
+      :humanized_name,
+      {},
+      {multiple: :true, class: 'chosen-select'}
+    ) %>
+    </div>
+
+    <div>
+      <%= f.label(:twitter) %>
+      <%= f.text_area(:twitter) %>
+    </div>
+
+    <div>
+      <%= f.label(:logo_url) %>
+      <%= f.text_area(:logo_url) %>
+    </div>
+
+    <div>
+      <%= f.label(:manager) %>
+      <%= f.text_area(:manager) %>
+    </div>
+
+    <%= f.submit %>
+  <% end %>

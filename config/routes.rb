@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
 
   get('/about', { to: 'about#index' })
+  get('/', { to: 'directories#index', as: 'home' })
 
 end
 
