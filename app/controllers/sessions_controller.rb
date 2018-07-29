@@ -11,9 +11,9 @@ class SessionsController < ApplicationController
             flash[:success] = "Thanks for signing in, #{user.first_name}!"
             if user.admin
 
-                redirect_to admin_dashboard_path
+                redirect_to admin_dashboard_index_path
             else
-                redirect_to directory_index_path
+                redirect_to home_path
             end
         else
             flash[:danger] = "Invalid email or password"
