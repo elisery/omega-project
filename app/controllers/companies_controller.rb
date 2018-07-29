@@ -33,10 +33,10 @@ class CompaniesController < ApplicationController
         end
     end
 
-    def destroy
-        @company.destroy
-        redirect_to admin_organizations_path
-    end
+    # def destroy
+    #     @company.destroy
+    #     redirect_to admin_organizations_path
+    # end
     private
     def company_params
         params.require(:company).permit(:name, :address, :overview, :number_employees, :tech_team_size, :website_url, :twitter, :logo_url, :manager, :published, tag_ids: [])
