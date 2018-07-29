@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
     def index
         # @events = Event.order(date: :desc)
-        # render json: @events
+        @events = Event.all      
     end
 end
 

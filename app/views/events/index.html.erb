@@ -3,7 +3,17 @@
 </div>
 
 <div class="wrapper">
-    <div class="calendar">Calendar</div>
+    <div class="calendar">
+        <%= month_calendar events: @events do |date, events| %>
+            <%= date.day %>
+
+            <% events.each do |event| %>
+                <div>
+                    <%= event.title %>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
 
     <div class="search-event">
         <form class="form-inline my-2 my-lg-0">
