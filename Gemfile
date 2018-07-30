@@ -35,6 +35,9 @@ gem 'kaminari'
 gem 'will_paginate', '~> 3.1.0'
 gem "simple_calendar", "~> 2.0"
 gem 'faraday'
+gem 'geocoder'
+gem 'gmaps4rails'
+gem 'will_paginate-bootstrap4'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
