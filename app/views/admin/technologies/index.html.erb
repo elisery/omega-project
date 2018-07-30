@@ -1,42 +1,45 @@
 <div class="container">
   <h2 class="ml-3 title">Technologies</h2>
-  <%= form_for @technology, :url => admin_technologies_path, :method => :post do |f| %>
 
-    <div class="form-row align-items-center d-flex justify-content-start mt-5">
-      <div class="col-8 mr-4 mb-1">
-        <%= f.text_field(:name, class:'form-control', placeholder:'Tech name') %>
+  <div class="jumbotron">
+    <%= form_for @technology, :url => admin_technologies_path, :method => :post do |f| %>
+
+      <div class="form-row align-items-center d-flex justify-content-start mt-5">
+        <div class="col-8 mr-4 mb-1">
+          <%= f.text_field(:name, class:'form-control', placeholder:'Tech name') %>
+        </div>
+        <div class="col-auto">
+          <%= f.submit 'Add', :class => 'btn-sm btn-outline-primary' %>
+        </div>
       </div>
-      <div class="col-auto">
-        <%= f.submit 'Add', :class => 'btn-sm btn-outline-primary' %>
-      </div>
-    </div>
-  <% end %>
- 
-  <table class="table table-borderless mt-5">
-    <thead>
-      <tr>
-        <th scope="col">Technology Name</th>
-        <th scope="col">Action</th>
-      </tr>
-    </thead>
-    <tbody id="tag-table">
-      <% @technologies.each do |t| %>
-      <tr id="<%= t.id %>">
-        <td>
-          <%= t.name %>
-        </td>
-        <td>
-          <p>
-            <%= link_to 'Remove', 
-              admin_technology_path(t.id), 
-              method: :delete, 
-              :remote => true, 
-              :class => 'delete_technology' 
-            %> 
-          </p>
-        </td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+    <% end %>
+  
+    <table class="table table-borderless mt-5">
+      <thead>
+        <tr>
+          <th scope="col">Technology Name</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody id="tag-table">
+        <% @technologies.each do |t| %>
+        <tr id="<%= t.id %>">
+          <td>
+            <%= t.name %>
+          </td>
+          <td>
+            <p>
+              <%= link_to 'Remove', 
+                admin_technology_path(t.id), 
+                method: :delete, 
+                :remote => true, 
+                :class => 'delete_technology' 
+              %> 
+            </p>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
