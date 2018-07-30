@@ -18,8 +18,7 @@
 
  @import "bootstrap";
  @import "news";
- @import url('https://fonts.googleapis.com/css?family=Montserrat|Roboto');
-
+ @import url('https://fonts.googleapis.com/css?family=Lato|Noto+Sans|Passion+One|Roboto');
  html {
     height: 100%;
     box-sizing: border-box;
@@ -31,17 +30,26 @@
     box-sizing: inherit;
  } 
 
+ .title {
+    font-family: 'Passion One', cursive;
+    font-size: 2rem;
+    letter-spacing: 1px;
+ }
  body {
-    position: relative;
+    // position: relative;
     margin: 0;
-    padding-bottom: 6rem;
     min-height: 100%;
     // background: linear-gradient(to left, #bdc3c7, #2c3e50); 
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
+    background-image: url("background1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover; 
+    // background-position: center center;  
+    background-attachment: fixed;
  }
 
  nav {
-    background: linear-gradient(to left, #bdc3c7, #2c3e50); 
+    // background: linear-gradient(to left, #bdc3c7, #2c3e50); 
     font-size: 1rem;  
     opacity: 0.9;
  }
@@ -56,20 +64,29 @@
  footer {
     position: absolute;
     right: 0;
-    bottom: 2;
+
     left: 0;
     height: 70px;
     width: 100%;
 
+    border-top: 1px solid #2c3e50;
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(to left, #bdc3c7, #2c3e50); 
-
  }
 
  footer a {
     color: #2c3e50;
  }
+ 
+ footer ul {
+    
+ }
 
  footer a:hover {
     color: #3c3c3c;
  }
+
+ .jumbotron {
+    // background-color: #cae4db !important;
+    // height: 700px;
+ }
+
