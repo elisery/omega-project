@@ -1,13 +1,7 @@
 class Company < ApplicationRecord
-<<<<<<< HEAD
   has_many :taggings, dependent: :destroy 
   has_many :tags, through: :taggings
   
-=======
-  
-  has_many :taggings, dependent: :destroy 
-  has_many :tags, through: :taggings
->>>>>>> 8318404a06f5c8ce643a92ba3316eebf609bff61
   has_many :users
 
   validates :name, presence: true, uniqueness: true
