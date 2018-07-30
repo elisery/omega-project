@@ -43,7 +43,7 @@
         <div class="navbar-nav">
           <ul class="nav navbar-nav navbar-right">      
             <% if current_user.present? %>
-              <span class="ml-2 mt-2 mr-3">Hi, <%= current_user.full_name %></span> 
+              <li class="nav-item mr-3"><a class="nav-link">Hi, <%= current_user.full_name %></a></li> 
             <% end %>
             <% if controller.class.parents.include?(Admin) %>
               <%= render partial: "partials/admin_header" %>
