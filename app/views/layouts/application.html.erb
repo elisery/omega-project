@@ -7,47 +7,51 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
+
+    <style>
+    footer {
+      height: 100px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    .bottom-links{
+      display: flex;
+      justify-content: center;
+    }
+    .container {
+  
+      width: 960px;
+    }
+    .auth-link {
+      height: 40px;
+      margin-right: 16px;
+      vertical-align: middle;
+    }
+    </style>
   </head>
 
-
-
-  <body style="margin-bottom: 100px;">
+  <body style="">
     <header>
-      <nav class="navbar navbar-default fixed-top navbar-reverse navbar-expand-sm navbar-light bg-light border-bottom-2">
-        <a class="navbar-brand text-dark" href="/directory">{ company logo }</a>
-        <div class="collapse navbar-collapse topnav justify-content-end">
-          <ul class="nav navbar-nav navbar-right ">       
-      <nav class="navbar navbar-default fixed-top navbar-reverse navbar-expand-sm border-bottom-2">
-      <a class="navbar-brand" href="/"><%= image_tag("click-cloud-bright-blue.png", style: "max-width:60px; margin-top: -7px;") %></a>
-
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <nav class="navbar navbar-light navbar-expand-lg">
+        <a class="navbar-brand" href="/">
+          <%= image_tag("click-cloud-bright-blue.png", style: "max-width:70px; margin-top: -7px;") %>
+        </a>
         
-        <div class="collapse navbar-collapse topnav justify-content-end" id="navbarNavAltMarkup">
-          <ul class="nav navbar-nav navbar-right ">      
-            <% if user_signed_in? %>
-              <!-- -->
-            <% end %>
+        <div class="navbar-nav">
+          <ul class="nav navbar-nav navbar-right">      
             <% if current_user.present? %>
-              <span>Hi, <%= current_user.full_name %></span> 
+              <span class="ml-2 mt-2 mr-3">Hi, <%= current_user.full_name %></span> 
             <% end %>
-            <li class="nav-item mr-4"><a class="nav-link"<%= link_to 'Directory', home_path %></a></li>
-            <li class="nav-item mr-4"><a class="nav-link"<%= link_to 'Events', events_path %></a></li>
-            <li class="nav-item mr-4"><a class="nav-link"<%= link_to 'News', news_index_path %></a></li>
-            
-              <li class="nav-item mr-4"><a class="nav-link text-white"> Admin Panel: </a></li>
-              <li class="nav-item mr-4"><a class="nav-link"<%= link_to 'Organizations', admin_dashboard_index_path %></a></li>
-              <li class="nav-item mr-4"><a class="nav-link"<%= link_to 'Events', admin_events_path %></a></li>
-              <li class="nav-item mr-4"><a class="nav-link"<%= link_to 'News', admin_news_index_path %></a></li>
-              <li class="nav-item mr-4"><a class="nav-link"<%= link_to 'Users', admin_users_path %></a></li>
-              <li class="nav-item mr-4"><a class="nav-link"<%= link_to 'Technologies', admin_technologies_path %></a></li>
-            
+            <% if self.class.parent == Admin %>
+              <%= render partial: "partials/admin_header" %>
+            <% else %>
+              <%= render partial: "partials/header" %>
+            <% end %>
           <ul>
         </div>
       </nav>
     </header>
-
 
     <div class="container-fluid">
       <div style="margin-top: 100px;">
@@ -56,38 +60,28 @@
             <%= message %>
           </div>
         <% end %>
-
         <%= yield %>
       </div>
     </div>
     
   </body>
 
-  <!-- Footer -->
-    <footer class="page-footer font-small unique-color-dark pt-4">
-        <div class="footer">
-          <ul class="list-unstyled list-inline py-2 text-right">
-            <li class="list-inline-item">
-              <small class="text-dark">Built and maintained by student from 
-              <a href="https://www.codecore.ca/">Codecore</a>
-              </small>
-            </li>
-            <li class="list-inline-item float-left ml-4">
-            <% if current_user.present? %>
-              <% link_to(
-                'Sign Out',
-                session_path, 
-                method: :delete
-              ) %>
-            <% else %>
-              <a href="#!" class="btn btn-outline-dark">Sign Up</a>
-              <a href="#!" class="btn btn-outline-dark">Sign In</a>
-              <a href="#!" class="btn btn-outline-dark">Sign Out</a>
-            <% end %>
-              <a href="#!" class="btn btn-outline-dark">About</a>
-            </li>
-          </ul>
-        </div>
-    </footer>
+<!--Footer-->
+  
+  <footer>
+    <div class="container bottom-links">
+      <% if current_user.present? %>
+        <%= link_to(
+          'Sign Out',
+          session_path, 
+          method: :delete, 
+          class:"btn btn-outline-light"
+        ) %>
+      <% else %>
+        <a href="/users/new" class="btn btn-outline-light auth-link">Sign Up</a>
+        <a href="/session/new" class="btn btn-outline-light auth-link">Sign In</a>
+      <% end %>
+    </div>
+  </footer>
     
 </html>
