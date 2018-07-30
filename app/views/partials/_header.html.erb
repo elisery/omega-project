@@ -1,3 +1,9 @@
 <li class="nav-item mr-4 ml-4"><a class="nav-link"<%= link_to 'Directory', home_path %></a></li>
 <li class="nav-item mr-4"><a class="nav-link"<%= link_to 'Events', events_path %></a></li>
 <li class="nav-item mr-4"><a class="nav-link"<%= link_to 'News', news_index_path %></a></li>
+<% if current_user && current_user.admin? %>
+  <li class="nav-item mr-4"><a class="nav-link text-light"<%= link_to 'Admin Panel', admin_dashboard_index_path %></a></li>
+<% end %>
+<li class="nav-item mr-4"><a class="nav-link text-light"<%= link_to 'Directory', home_path %></a></li>
+<li class="nav-item mr-4"><a class="nav-link text-light"<%= link_to 'Events', events_path %></a></li>
+<li class="nav-item mr-4"><a class="nav-link text-light"<%= link_to 'News', news_index_path %></a></li>
