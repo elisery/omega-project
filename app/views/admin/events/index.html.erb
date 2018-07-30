@@ -1,16 +1,15 @@
 <div class="container">
   <h2 class="ml-3">Events</h2>
-  <%= form_for( @meetup_group, :url => admin_events_path, :method => :post) do |f| %>
+  <%= form_for( @meetup_group, :url => admin_events_path, :method => :post ) do |f| %>
 
     <div class="form-row align-items-center d-flex justify-content-start mt-5">
       <div class="col-8 mr-4 mb-1">
         <%= f.text_field(:name, class:'form-control', placeholder:'Meetup ID') %>
       </div>
       <div class="col-auto">
-        <%= f.submit 'Submit', :class => 'btn-sm btn-outline-primary' %>
+        <%= f.submit 'Submit', :class => 'btn-sm btn-outline-light' %>
       </div>
-    </div>
-  <% end %>
+    <% end %>
 
   
   <table class="table table-borderless mt-4">
@@ -32,9 +31,8 @@
               "Remove",
               admin_event_path(m.id),
               method: :delete,
-              data: { confirm: 'Are you sure?' },
               :remote => true,
-              :class => 'delete_group'
+              :class => 'delete_group text-light'
             ) %>
           </p>
         </td>

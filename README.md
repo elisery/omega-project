@@ -26,10 +26,12 @@ Users will need to have Rails installed on their machine.
 
 ### Contributors
 
-Ankita Gautam: Maps API Integration, Meetup API Integration, Company "show" page. 
-Juliana Martins: Events Calendar Integration, logo & website design
-Jessie: Setup of authorization and authentication controllers and views. 
-Elise Yohm: Project Lead, Admin Pages and AJAX implementation (events, news, technologies, organizations), Integration of the News API and the main News page, page formatting and cleanup for all pages. 
+Ankita Gautam: Maps API Integration, Meetup API Integration, 'Company' & 'Directories' pages
+Juliana Martins: Events Calendar API Integration, logo & website design, clean up and
+debugging views
+Jessie Jung: Setup of authorization and authentication controllers and views, overall team 
+contributions 
+Elise Yohm: Project Lead, Admin Pages and AJAX implementation (events, news, technologies, organizations), Integration of the News API and the main News page, page formatting and cleanup for all pages
 All: Planning and requirements building
 
 ### Acknowledgements

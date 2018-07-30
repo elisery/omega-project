@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>Organizations</h2>
+  <h2 class="title">Organizations</h2>
   <%= link_to "Add", new_company_path, class: "mt-4 btn btn-danger" %>
 
   <table class="table table-borderless mt-5">
@@ -36,7 +36,7 @@
               method: :delete, 
               data: { confirm: 'Are you sure?' },
               :remote => true,
-              :class => 'delete_organization'
+              :class => 'delete_organization text-light'
             ) %>
           </p>
         </td>

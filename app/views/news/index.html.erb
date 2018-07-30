@@ -1,25 +1,26 @@
 <div class="container-fluid mt-3">
-    
-  <% @news_items.each do |news| %>
-    <div class="row mt-4">
-      <div class="col-3 mr-4">
-        <img src=<%= news["urlToImage"]%> alt="Image unavailable" />
-      </div>
-      <div class="col-8">
-        <%= link_to(
-          news["title"], 
-          news["url"]
-        ) %><br/>
-        <p>
-          <%= time_ago_in_words(news["publishedAt"]) %> ago
-          - Source: 
+  <div class="jumbotron"> 
+    <% @news_items.each do |news| %>
+      <div class="row mt-4">
+        <div class="col-3 mr-4">
+          <img src=<%= news["urlToImage"]%> alt="Image unavailable" />
+        </div>
+        <div class="col-8">
           <%= link_to(
-            news["source"]["name"], 
+            news["title"], 
             news["url"]
-          ) %>
-        </p>
-        <p><%= news["description"]%></p>
+          ) %><br/>
+          <p>
+            <%= time_ago_in_words(news["publishedAt"]) %> ago
+            - Source: 
+            <%= link_to(
+              news["source"]["name"], 
+              news["url"]
+            ) %>
+          </p>
+          <p><%= news["description"]%></p>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

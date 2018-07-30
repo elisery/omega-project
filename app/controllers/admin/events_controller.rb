@@ -25,9 +25,10 @@ class Admin::EventsController < ApplicationController
       if @meetup_group.save
         format.html {
           redirect_to admin_events_path
-          flash[:success] = "Group saved"
+          # flash[:success] = "Group saved"
         }
-        format.js
+        format.js 
+        # format.js { render 'create.js.erb'} 
         format.json { render json: @meetup_group, status: :created, location: @meetup_group }
       else
         format.html { redirect_to admin_events_path }

@@ -1,46 +1,48 @@
-<div>
-    <h1>Events</h1>
-</div>
 
-<div class="wrapper">
-    <div class="calendar">
+<div class="mx-5">
+    <h2 class"title">Events</h2>
+    <div class="mx-auto jumbotron">
         <%= month_calendar events: @events do |date, events| %>
             <%= date.day %>
-
             <% events.each do |event| %>
-                <div>
-                    <%= event.title %>
+                <div class="mb-1">
+                    <small>
+                        <%= link_to(event.title.truncate(30, separator: ' '), event.event_url) %>
+                    </small>
                 </div>
             <% end %>
         <% end %>
-    </div>
-
-    <div class="search-event">
-        <%= form_tag(events_path, method: :get, id: "search", name: "search", class: "form-inline my-2 my-lg-0") do %>
-            <%= text_field_tag :search, params[:search], placeholder: "Search Events", class: "form-control mr-sm-2" %>
-            <%= submit_tag "Search", name: nil, class: "btn btn-outline-dark" %>
+        <%= form_tag(events_path, method: :get) do %>
+            <%= text_field_tag :search, nil, placeholder: "Search Events", class: "form-control mr-sm-5" %>
         <% end %>
     </div>
-
-
-
-<div>
-  <% @meetups.each do |meetup| %>
-    <div class="card" >
-        <ul>
-            <li>
-                <h3>
-                    <%= meetup['name'] %>
-                </h3>  
-                <small>
-                    on <%= Time.at(meetup['time'] / 1000).to_date%> 
-                </small> 
-                <small>
-                    @ <%= Time.at(meetup['time'] / 1000).strftime("%I:%M%P") %> 
-                </small> 
-
-            </li>
-        </ul>
-    </div>
-  <% end %>
 </div>
+
+<% if @query %>
+    <div>
+        <% if @meetups.length >=1 %>
+            <table class="table">
+                <thead/> 
+                <tbody>
+                    <% @meetups.each do |meetup| %>
+                        <tr>
+                            <th scope="row">
+                                <%= link_to(meetup.title, meetup.event_url) %>
+                            </th>
+                            <td>
+                                <small>
+                                    on <%= meetup.date %> 
+                                </small> 
+                                <small>
+                                    @<%= meetup.time %> 
+                                </small> 
+                            </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        <% else %>
+            <small> <p>Sorry! Couldn't find any matching event.</p></small>
+        <% end %>
+    </div>
+<% end %>

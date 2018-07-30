@@ -39,18 +39,16 @@
     // position: relative;
     margin: 0;
     min-height: 100%;
-    // background: linear-gradient(to left, #bdc3c7, #2c3e50); 
     font-family: 'Noto Sans', sans-serif;
     background-image: url("background1.jpg");
     background-repeat: no-repeat;
     background-size: cover; 
-    // background-position: center center;  
     background-attachment: fixed;
  }
 
  nav {
-    // background: linear-gradient(to left, #bdc3c7, #2c3e50); 
-    font-size: 1rem;  
+    font-size: 1.1rem;  
+    letter-spacing: 2px;
     opacity: 0.9;
  }
 
@@ -59,6 +57,18 @@
  }
  nav a:hover { 
     color: #1ccddd;
+ }
+
+ .user {
+    font-family: 'Passion One', cursive;
+    font-size: 1rem;
+    color: #66AB8C;
+    font-weight: bolder;
+ }
+
+ .admin {
+    color: #CCCBC6;
+    font-weight: bolder;
  }
  
  footer {
@@ -76,17 +86,17 @@
  footer a {
     color: #2c3e50;
  }
- 
- footer ul {
-    
- }
 
  footer a:hover {
     color: #3c3c3c;
  }
 
  .jumbotron {
-    // background-color: #cae4db !important;
-    // height: 700px;
+    background-color: #f7f9fb !important;
+    opacity: 0.9;
+ }
+
+ .dash-img {
+  opacity: 0.6;
  }
 
