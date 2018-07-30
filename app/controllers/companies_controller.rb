@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-    before_action :authenticate_user!
+    before_action :authenticate_user! , only: [:new, :create, :edit, :update, :destroy]
     before_action :authorize_admin!, only: [:new, :create, :edit, :update, :destroy]
 
     def new
@@ -19,6 +19,12 @@ class CompaniesController < ApplicationController
 
     def show
         @company = Company.find params[:id]
+        @hash = Gmaps4rails.build_markers(@company) do |c, m|
+            m.lat c.latitude
+            m.lng c.longitude
+            m.title c.name
+        end
+
     end
 
     def edit
@@ -33,19 +39,11 @@ class CompaniesController < ApplicationController
         end
     end
 
-<<<<<<< HEAD
     def destroy
         @company.destroy
         redirect_to admin_organizations_path
     end
 
-    def company_params
-        params.require(:company).permit(:name, :address, :overview, :number_employees, :tech_team_size, :website_url, :twitter, :logo_url, :manager, :published, tag_ids: [])
-=======
-    # def destroy
-    #     @company.destroy
-    #     redirect_to admin_organizations_path
-    # end
     private
     def company_params
         params.require(:company).permit(:name, :address, :overview, :number_employees, :tech_team_size, :website_url, :twitter, :logo_url, :manager, :published, tag_ids: [])
@@ -56,6 +54,5 @@ class CompaniesController < ApplicationController
         flash[:danger] = "Access Denied"
         redirect_to home_path
         end
->>>>>>> integration
     end
 end
