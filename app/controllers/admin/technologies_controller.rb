@@ -8,8 +8,6 @@ class Admin::TechnologiesController < ApplicationController
     @technology = Tag.new
   end
 
-
-
   def create
     @technology = Tag.new technology_params
     # redirect_to admin_technologies_path

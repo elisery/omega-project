@@ -2,48 +2,46 @@
   <h2 class="title">Organizations</h2>
   <%= link_to "Add", new_company_path, class: "mt-4 btn btn-danger" %>
 
-  <div class="jumbotron">
-    <table class="table table-borderless mt-5">
-      <thead>
-        <tr>
-          <th scope="col">Organization Name</th>
-          <th scope="col">Published?</th>
-          <th scope="col">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @companies.each do |c| %>
-        <tr id="<%= c.id %>">
-          <td>
-            <%= c.name %>
-          </td>
-          <td>
-            <%= c.published %>
-          </td>
-          <td>
-            <p>
-              <%= link_to(
-                "Show", 
-                company_path(c.id),
-                method: :get
-              ) %>
-              <%= link_to(
-                "Edit",
-                edit_company_path(c.id)
-              ) %>
-              <%= link_to(
-                "Remove",
-                admin_organization_path(c.id),
-                method: :delete, 
-                data: { confirm: 'Are you sure?' },
-                :remote => true,
-                :class => 'delete_organization'
-              ) %>
-            </p>
-          </td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>  
-  </div>  
+  <table class="table table-borderless mt-5">
+    <thead>
+      <tr>
+        <th scope="col">Organization Name</th>
+        <th scope="col">Published?</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @companies.each do |c| %>
+      <tr id="<%= c.id %>">
+        <td>
+          <%= c.name %>
+        </td>
+        <td>
+          <%= c.published %>
+        </td>
+        <td>
+          <p>
+            <%= link_to(
+              "Show", 
+              company_path(c.id),
+              method: :get
+            ) %>
+            <%= link_to(
+              "Edit",
+              edit_company_path(c.id)
+            ) %>
+            <%= link_to(
+              "Remove",
+              admin_organization_path(c.id),
+              method: :delete, 
+              data: { confirm: 'Are you sure?' },
+              :remote => true,
+              :class => 'delete_organization text-light'
+            ) %>
+          </p>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

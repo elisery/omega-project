@@ -7,7 +7,7 @@
         <%= f.text_field(:name, class:'form-control', placeholder:'Tech name') %>
       </div>
       <div class="col-auto">
-        <%= f.submit 'Add', :class => 'btn-sm btn-outline-primary' %>
+        <%= f.submit 'Add', :class => 'btn-sm btn-outline-light' %>
       </div>
     </div>
   <% end %>
@@ -31,7 +31,7 @@
               admin_technology_path(t.id), 
               method: :delete, 
               :remote => true, 
-              :class => 'delete_technology' 
+              :class => 'delete_technology text-light' 
             %> 
           </p>
         </td>
