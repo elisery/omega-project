@@ -20,7 +20,7 @@
       justify-content: center;
     }
     .container {
-      display: flex;
+  
       width: 960px;
     }
     .auth-link {
@@ -33,41 +33,25 @@
 
   <body style="">
     <header>
-      <nav class="navbar navbar-default navbar-reverse navbar-expand-sm navbar-light bg-light border-bottom-2">
-        <a class="navbar-brand text-dark" href="/directory">{ company logo }</a>
-        <div class="collapse navbar-collapse topnav justify-content-end">
-          <ul class="nav navbar-nav navbar-right ">       
-      <nav class="navbar navbar-default navbar-reverse navbar-expand-sm border-bottom-2">
-      <a class="navbar-brand" href="/"><%= image_tag("click-cloud-bright-blue.png", style: "max-width:70px; margin-top: -7px;") %></a>
-
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <nav class="navbar navbar-light navbar-expand-lg">
+        <a class="navbar-brand" href="/">
+          <%= image_tag("click-cloud-bright-blue.png", style: "max-width:70px; margin-top: -7px;") %>
+        </a>
         
-        <div class="collapse navbar-collapse topnav justify-content-end" id="navbarNavAltMarkup">
-          <ul class="nav navbar-nav navbar-right ">      
-            <% if user_signed_in? %>
-              <!-- -->
-            <% end %>
+        <div class="navbar-nav">
+          <ul class="nav navbar-nav navbar-right">      
             <% if current_user.present? %>
-              <span>Hi, <%= current_user.full_name %></span> 
+              <span class="ml-2 mt-2 mr-3">Hi, <%= current_user.full_name %></span> 
             <% end %>
-            <li class="nav-item mr-4"><a class="nav-link"<%= link_to 'Directory', home_path %></a></li>
-            <li class="nav-item mr-4"><a class="nav-link"<%= link_to 'Events', events_path %></a></li>
-            <li class="nav-item mr-4"><a class="nav-link"<%= link_to 'News', news_index_path %></a></li>
-            
-              <li class="nav-item mr-4"><a class="nav-link text-white"> Admin Panel: </a></li>
-              <li class="nav-item mr-4"><a class="nav-link"<%= link_to 'Organizations', admin_dashboard_index_path %></a></li>
-              <li class="nav-item mr-4"><a class="nav-link"<%= link_to 'Events', admin_events_path %></a></li>
-              <li class="nav-item mr-4"><a class="nav-link"<%= link_to 'News', admin_news_index_path %></a></li>
-              <li class="nav-item mr-4"><a class="nav-link"<%= link_to 'Users', admin_users_path %></a></li>
-              <li class="nav-item mr-4"><a class="nav-link"<%= link_to 'Technologies', admin_technologies_path %></a></li>
-            
+            <% if self.class.parent == Admin %>
+              <%= render partial: "partials/admin_header" %>
+            <% else %>
+              <%= render partial: "partials/header" %>
+            <% end %>
           <ul>
         </div>
       </nav>
     </header>
-
 
     <div class="container-fluid">
       <div style="margin-top: 100px;">
@@ -76,7 +60,6 @@
             <%= message %>
           </div>
         <% end %>
-
         <%= yield %>
       </div>
     </div>
