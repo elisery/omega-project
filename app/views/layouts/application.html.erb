@@ -15,6 +15,13 @@
         <a class="navbar-brand text-dark" href="/directory">{ company logo }</a>
         <div class="collapse navbar-collapse topnav justify-content-end">
           <ul class="nav navbar-nav navbar-right ">       
+          <ul class="nav navbar-nav navbar-right ">      
+            <% if user_signed_in? %>
+              <!-- -->
+            <% end %>
+            <% if current_user.present? %>
+              <span>Hi, <%= current_user.full_name %></span> 
+            <% end %>
             <li class="nav-item mr-4"><a class="nav-link text-dark"<%= link_to 'Directory', home_path %></a></li>
             <li class="nav-item mr-4"><a class="nav-link text-dark"<%= link_to 'Events', events_path %></a></li>
             <li class="nav-item mr-4"><a class="nav-link text-dark"<%= link_to 'News', news_index_path %></a></li>
@@ -47,8 +54,16 @@
               </small>
             </li>
             <li class="list-inline-item float-left ml-4">
+            <% if current_user.present? %>
+              <% link_to(
+                'Sign Out',
+                session_path, 
+                method: :delete
+              ) %>
+            <% else %>
               <a href="#!" class="btn btn-outline-dark btn-rounded">Sign Up!</a>
               <a href="#!" class="btn btn-outline-dark btn-rounded">Sign In!</a>
+            <% end %>
               <a href="#!" class="btn btn-outline-dark btn-rounded">About</a>
             </li>
           </ul>

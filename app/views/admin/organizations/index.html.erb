@@ -1,8 +1,8 @@
 <div class="container">
   <h2>Organizations</h2>
-  <a class="btn btn-danger" href="/directory/new" role="button">Add</a>
+  <%= link_to "Add", new_company_path, class: "mt-4 btn btn-danger" %>
 
-  <table class="table table-borderless">
+  <table class="table table-borderless mt-5">
     <thead>
       <tr>
         <th scope="col">Organization Name</th>
@@ -22,9 +22,21 @@
         <td>
           <p>
             <%= link_to(
+              "Show", 
+              company_path(c.id),
+              method: :get
+            ) %>
+            <%= link_to(
+              "Edit",
+              edit_company_path(c.id)
+            ) %>
+            <%= link_to(
               "Remove",
-              admin_organizations_path(c.id),
-              method: :delete
+              admin_organization_path(c.id),
+              method: :delete, 
+              data: { confirm: 'Are you sure?' },
+              :remote => true,
+              :class => 'delete_organization'
             ) %>
           </p>
         </td>
