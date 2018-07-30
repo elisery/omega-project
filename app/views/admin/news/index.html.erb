@@ -12,7 +12,7 @@
       <%= f.text_field(:source, class:"form-control", placeholder:"News source") %>
     </div>
     <div class="col-auto mt-4">
-      <%= f.submit value:"Add", class:"btn-sm btn-outline-primary" %>
+      <%= f.submit value:"Add", class:"btn-sm btn-outline-light" %>
     </div>  
   </div>
   <% end %>
@@ -36,7 +36,7 @@
               admin_news_path(news_source.id), 
               method: :delete, 
               :remote => true, 
-              :class => 'delete_news_source' 
+              :class => 'delete_news_source text-light' 
             %> 
           </p>
         </td>
