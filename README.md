@@ -1,24 +1,40 @@
-# README
+# Project - 'Click Core'
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a technology hub with information and links to current tech companies in Vancouver. 
+Users can view company listings, images, addresses (mapped by location) and click to view
+the company website. Searches can be filtered by tech stack and size of the company. 
 
-Things you may want to cover:
+Other sections include: 
+* Events - upcoming tech events
+* News - the latest current events in the tech world
 
-* Ruby version
+## Getting Started
 
-* System dependencies
+To view this website prototype, run Rails Server and go to http://localhost:3000
 
-* Configuration
+### Prerequisites
 
-* Database creation
+Users will need to have Rails installed on their machine. 
 
-* Database initialization
+### Built With
+* Ruby on Rails
+* Javascript
+* Google Maps API
+* News-API
+* Meetup-API
+* Simple Calendar API
 
-* How to run the test suite
+### Contributors
 
-* Services (job queues, cache servers, search engines, etc.)
+Ankita Gautam: Maps API Integration, Meetup API Integration, Company "show" page. 
+Juliana Martins: Events Calendar Integration, logo & website design
+Jessie: Setup of authorization and authentication controllers and views. 
+Elise Yohm: Project Lead, Admin Pages and AJAX implementation (events, news, technologies, organizations), Integration of the News API and the main News page, page formatting and cleanup for all pages. 
+All: Planning and requirements building
 
-* Deployment instructions
+### Acknowledgements
 
-* ...
+Big thank you to our TAs: David, Jason, Tyler, and Arturo for all their help and advice. 
+
+Thank you to the makers of the News and Calendar APIs for making their software free to use. 
+

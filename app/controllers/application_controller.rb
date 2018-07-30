@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
     end
     helper_method(:current_user)
     
-
     def user_signed_in?
         current_user.present?
     end

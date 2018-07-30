@@ -1,55 +1,48 @@
 class EventsController < ApplicationController
 
     def index
-        @events = Event.all
-        @events = Event.order(date: :desc)
-        @meetups = fetch_meetup_events
-        # @events = MeetupApi.search(params[:text])
-    
-
-        if params[:search]
-          @events = Event.search(params[:search]).order("created_at DESC")
+        if (params['start_date'])
+            fetch_meetup_events(params['start_date'])
         else
-          @events = Event.all.order('created_at DESC')
+            d = Time.now.strftime("%Y-%m-%d")
+            fetch_meetup_events(d)
+        end
+        @events = Event.all
+        @events = Event.order(date: :desc)        
+
+        if params['search']
+            @query = params['search']
+            @meetups = Event.where('lower(title) LIKE ?', "%#{@query.downcase}%")
         end
     end
 
     private
-
-    def fetch_meetup_events
-        api_params = {
-            category: '1',
-            city: 'Vancouver',
-            country: 'CA',
-            status: 'upcoming',
-            format: 'json',
-            page: '10',
-            text: 'work', #api search term
-        }
-
-        meetup_api = MeetupApi.new
-        events = meetup_api.open_events(api_params)
-        
-        if events['results'].present?
-            events['results']
-        else
-            []
-        end
+    def fetch_meetup_events(start_date)
+        page_count = '10'
+        search_text = 'tech'
+        cat = 'education'
+        start_date_time = start_date+'T00%3A00%3A00'
+        url = "https://api.meetup.com/find/upcoming_events?photo-host=public&start_date_range=#{start_date_time}&page=20&text=#{search_text}&topic_category=#{cat}&page=#{page_count}&key=68693b7c233c3249e5b3e4c6cdc66"
+        puts url
+        response = HTTParty.get(url)
+        res_body = JSON.parse response.body
+        events = res_body['events']
+        puts 'Coming Here'
+        puts events
+        events.each do |e|
+            mg = MeetupGroup.create(
+                name: e['group']['name']
+            )
+            event = Event.create(
+                title: e['name'],
+                date: e['local_date'],
+                event_url: e['link'],
+                time: e['local_time'],
+                meetup_group_id: mg.id,
+                start_time: DateTime.parse("#{e['local_date']} #{e['local_time']}+00:00")
+            )
+        end 
     end
 
-    def create_event
-        Event.new(
-            title: e['name'],
-            date: Time.at(e['time'] / 1000).to_date,
-            event_url: e["event_url"],
-            time: Time.at(e['time'] / 1000).strftime("%I:%M%P"),
-            meetup_group_id: 1,
-            start_time: Time.at(e['time'] / 1000)
-        )
-    end
-
-    def event_params
-        params.require(:event).permit(:title, :date, :event_url, :time, :meetup_group_id, :start_time, :search)
-      end
 end
 
