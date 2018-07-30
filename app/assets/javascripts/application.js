@@ -16,9 +16,11 @@
 
 
 
-//= require jquery3
+//= require jquery2
 //= require chosen-jquery
 //= require filterrific/filterrific-jquery
+//= require underscore
+//= require gmaps/google
 //= require popper
 //= require bootstrap-sprockets
 //= require_tree .

@@ -1,11 +1,14 @@
 class Company < ApplicationRecord
-  
   has_many :taggings, dependent: :destroy 
   has_many :tags, through: :taggings
+  
   has_many :users
+  
+  geocoded_by :address
+  after_validation :geocode
 
-  validates :name, presence: true, uniqueness: true
-  validates :website_url, uniqueness: true
+  validates(:name, presence: true, uniqueness: true)
+  validates(:website_url, uniqueness: true)
 
   validates(:number_employees, 
     numericality: {
@@ -31,6 +34,8 @@ class Company < ApplicationRecord
     ]
   )
 
+  self.per_page = 3
+
   scope :with_tag, lambda { |tag_id|
     tag = Tag.where('id = ?', tag_id).first
     tag.companies.order(created_at: :asc)
@@ -45,15 +50,18 @@ class Company < ApplicationRecord
 
   scope :search_query, lambda { |query|
     tag = Tag.where('lower(name) = ?', query.downcase).first
+    name_add = where('lower(name) || lower(address) LIKE ?', "%#{query.downcase}%")
     if tag
-      tag.companies.order(created_at: :asc)
+      return tag.companies.order(created_at: :asc)
+    end
+    if(name_add)
+      return name_add
     else
       return nil
     end
   }
 
   scope :sorted_by, lambda { |sort_option|
-    # extract the sort direction from the param value.
     direction = (sort_option =~ /desc$/) ? 'desc' : 'asc'
     case sort_option.to_s
     when /^created_at_/
@@ -86,5 +94,4 @@ class Company < ApplicationRecord
     puts team_size_arr
     return team_size_arr         
   end
-
 end
