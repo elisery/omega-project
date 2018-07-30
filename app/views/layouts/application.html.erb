@@ -43,7 +43,7 @@
             <% if current_user.present? %>
               <span class="ml-2 mt-2 mr-3">Hi, <%= current_user.full_name %></span> 
             <% end %>
-            <% if self.class.parent == Admin %>
+            <% if controller.class.parents.include?(Admin) %>
               <%= render partial: "partials/admin_header" %>
             <% else %>
               <%= render partial: "partials/header" %>
@@ -75,11 +75,11 @@
           'Sign Out',
           session_path, 
           method: :delete, 
-          class:"btn btn-outline-light"
+          class:"btn btn-outline-dark"
         ) %>
       <% else %>
-        <a href="/users/new" class="btn btn-outline-light auth-link">Sign Up</a>
-        <a href="/session/new" class="btn btn-outline-light auth-link">Sign In</a>
+        <a href="/users/new" class="btn btn-outline-dark auth-link">Sign Up</a>
+        <a href="/session/new" class="btn btn-outline-dark auth-link">Sign In</a>
       <% end %>
     </div>
   </footer>
