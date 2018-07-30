@@ -1,40 +1,39 @@
-
-<br>
-<h3 align="center"> Welcome to the Vancouver Tech Hub!</h3>
-<br> <br>
+<h1 align="center">Welcome to the Vancouver Tech Hub!</h1>
 <div class="mx-5">
-    <%= form_tag(home_path, method: :get) do %>
-      <input class="form-control mr-sm-2" type="search" name="search_text" placeholder="Search" aria-label="Search" value="<%=@search_term %>">
-      <%= submit_tag "Search", class: "btn btn-outline-success my-2 my-sm-0" %>
-        <% if (@search_companies) %>
-            <div>
-                <%= select_tag "tech_stack", options_for_select(@tags.map { |t| t.name }), :include_blank => "Tech Stack"%>
-                <%= select_tag "team_size", options_for_select(@team_size_arr), :include_blank => "Team Size"%>
-            </div>
-            <div class="row mx-1">
-                <% @search_companies.each do |c| %>
-                    <div class="col-xs-12 col-md-6 col-lg-4">
-                        <div class="card mb-3">
-                        <div class="card-body">
-                            <img src="<%=c.logo_url %>" height="100" width="100">
-                            <h5 class="card-title"><%= c.name%></h5>
-                            <p class= "card-text mb-2"><%= c.address %></p>
-                            <p class= "card-text mb-2"><%= c.tech_team_size %></p>
-                            <p>
-                            <small>
-                                <strong>Tags:</strong>
-                                <%= c.tags.order(name: :asc).map{ |t| t.humanized_name }.join(", ") %>
-                            </small>
-                            </p>
-                        </div>
-                        </div> 
-                    </div>
-                <% end %>
-            </div>
-        <% else %>
-            <% if @search_term != "" %>
-                <h6> No matching record found! </h6>
-            <% end %>
-        <% end %>
-    <% end %>     
+  <%= form_for_filterrific @filterrific do |f| %>
+    <div>
+      <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
+      <%= f.text_field(
+        :search_query,
+        class: 'filterrific-periodically-observed form-control mx-5',
+        placeholder: "Search"
+      ) %>
+    </div>
+    <div>
+      <%= f.select(
+        :with_tag,
+        @filterrific.select_options[:with_tag],
+        { include_blank: 'Tech Stack' },
+      ) %>
+    </div>
+    <div>
+      <%= f.select(
+        :with_team_size,
+        @filterrific.select_options[:with_team_size],
+        { include_blank: 'Team Size' },
+      ) %>
+    </div>
+    <div class: 'form-control mx-5'>
+      <%= link_to(
+        'Reset filters',
+        reset_filterrific_url,
+      ) %>
+    </div>
+    <%= render_filterrific_spinner %>
+  <% end %>
+
+  <%= render(
+    partial: 'directories/list',
+    locals: { companies: @companies }
+  )%>
 </div>

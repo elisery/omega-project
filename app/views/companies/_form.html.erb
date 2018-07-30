@@ -1,5 +1,7 @@
+
 <div class="container-fluid mt-3">
   <%= form_for(@company) do |f| %>
+
     <% if @company.errors.present? %>
       <p>
         <%= @company.errors.full_messages.join(', ') %>
@@ -73,3 +75,4 @@
     </div>
     <% end %>
   </div>
+
