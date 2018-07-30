@@ -1,48 +1,49 @@
 <div class="container">
-  <h2 class="ml-2">News Sources</h2>
-
-  <%= form_for @news_source, :url=> admin_news_index_path, :method=> :post do |f| %>
-  <div class="form-row">
-    <% if @news_source.errors.present? %>
-      <p>
-        <%= @news_source.errors.full_messages.join(', ') %>
-      </p>
-    <% end %>
-    <div class="col-6 mr-4">
-      <%= f.text_field(:source, class:"form-control", placeholder:"News source") %>
-    </div>
-    <div class="col-auto mt-4">
-      <%= f.submit value:"Add", class:"btn-sm btn-outline-primary" %>
-    </div>  
-  </div>
-  <% end %>
-  
-  <table class="table table-borderless">
-    <thead>
-      <tr>
-        <th scope="col">Source</th>
-        <th scope="col">Action</th>
-      </tr>
-    </thead>
-    <tbody id="news-table">
-      <% @news_sources.each do |news_source| %>
-      <tr id="<%= news_source.id %>">
-        <td>
-          <%= news_source.source %>
-        </td>
-        <td>
-          <p>
-            <%= link_to 'Remove', 
-              admin_news_path(news_source.id), 
-              method: :delete, 
-              :remote => true, 
-              :class => 'delete_news_source' 
-            %> 
-          </p>
-        </td>
-      </tr>
+  <h2 class="ml-2 title">News Sources</h2>
+  <div class="jumbotron">
+    <%= form_for @news_source, :url=> admin_news_index_path, :method=> :post do |f| %>
+    <div class="form-row">
+      <% if @news_source.errors.present? %>
+        <p>
+          <%= @news_source.errors.full_messages.join(', ') %>
+        </p>
       <% end %>
-    </tbody>
-  </table>
+      <div class="col-6 mr-4">
+        <%= f.text_field(:source, class:"form-control", placeholder:"News source") %>
+      </div>
+      <div class="col-auto mt-4">
+        <%= f.submit value:"Add", class:"btn-sm btn-outline-primary" %>
+      </div>  
+    </div>
+    <% end %>
+    
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th scope="col">Source</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody id="news-table">
+        <% @news_sources.each do |news_source| %>
+        <tr id="<%= news_source.id %>">
+          <td>
+            <%= news_source.source %>
+          </td>
+          <td>
+            <p>
+              <%= link_to 'Remove', 
+                admin_news_path(news_source.id), 
+                method: :delete, 
+                :remote => true, 
+                :class => 'delete_news_source' 
+              %> 
+            </p>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
 
