@@ -33,7 +33,6 @@ class CompaniesController < ApplicationController
         end
     end
 
-<<<<<<< HEAD
     def destroy
         @company.destroy
         redirect_to admin_organizations_path
@@ -41,21 +40,5 @@ class CompaniesController < ApplicationController
 
     def company_params
         params.require(:company).permit(:name, :address, :overview, :number_employees, :tech_team_size, :website_url, :twitter, :logo_url, :manager, :published, tag_ids: [])
-=======
-    # def destroy
-    #     @company.destroy
-    #     redirect_to admin_organizations_path
-    # end
-    private
-    def company_params
-        params.require(:company).permit(:name, :address, :overview, :number_employees, :tech_team_size, :website_url, :twitter, :logo_url, :manager, :published, tag_ids: [])
-    end
-
-    def authorize_admin!
-        unless current_user.admin?
-        flash[:danger] = "Access Denied"
-        redirect_to home_path
-        end
->>>>>>> integration
     end
 end
