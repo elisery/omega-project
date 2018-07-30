@@ -1,7 +1,7 @@
 class Company < ApplicationRecord
-  
   has_many :taggings, dependent: :destroy 
   has_many :tags, through: :taggings
+  
   has_many :users
 
   validates :name, presence: true, uniqueness: true

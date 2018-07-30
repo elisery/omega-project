@@ -12,7 +12,7 @@ class Admin::EventsController < ApplicationController
 
   def create
     @meetup_group = MeetupGroup.new meetup_group_params
-    # redirect_to admin_technologies_path
+    # redirect_to _technologies_path
 
     # if @meetup_group.save
     #   # render json: params
