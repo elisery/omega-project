@@ -1,13 +1,26 @@
-
 <div class="container">
   <div class="d-flex justify-content-center p-2">
-    <div class="logo mr-2">
+    <div class="logo mr-3">
       <img src="<%= @company.logo_url %>" width="100px">
     </div>
     <div class="company-info">
       <h5 class=""><%= @company.name%></h5>
-      <p><%= @company.overview %></p>
+      <a class="mb-2" href = "http://<%= @company.website_url %>">Visit website</a>
       <p class=""><%= @company.address %></p>
+      <small>
+        <strong>Overview:</strong>
+        <p><%= @company.overview %></p>
+      </small>
+      <p>
+        <small>
+          <strong>Number Employees: <%= @company.number_employees %> </strong>
+        </small>
+      </p>
+      <p>
+        <small>
+          <strong>Tech Team Size: <%= @company.tech_team_size %></strong>
+        </small>
+      </p>
       <p>
         <small>
           <strong>Tags:</strong>
@@ -18,5 +31,23 @@
     <div class="map">
       <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="100" height="0" alt="" />
     </div>
+  </div>
+</div>
+<div class="container">
+  <ul class="nav nav-tabs row mx-5" role="tablist">
+      <li class="nav-item">
+          <a class="nav-link active" href="#profile" role="tab" data-toggle="tab">Events</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="#buzz" role="tab" data-toggle="tab">News</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="#references" role="tab" data-toggle="tab">Twitter feed</a>
+      </li>
+  </ul>
+  <div class="tab-content row mx-5">
+      <div role="tabpanel" class="tab-pane fade in active" id="profile">aaa</div>
+      <div role="tabpanel" class="tab-pane fade" id="buzz">bbb</div>
+      <div role="tabpanel" class="tab-pane fade" id="references">ccc</div>
   </div>
 </div>

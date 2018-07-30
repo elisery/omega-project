@@ -3,7 +3,7 @@
   <% @news_items.each do |news| %>
     <div class="row mt-4">
       <div class="col-3 mr-4">
-        <img src=<%= news["urlToImage"]%> />
+        <img src=<%= news["urlToImage"]%> alt="Image unavailable" />
       </div>
       <div class="col-8">
         <%= link_to(
