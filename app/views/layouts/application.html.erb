@@ -7,17 +7,37 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
+
+    <style>
+    footer {
+      height: 100px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    .bottom-links{
+      display: flex;
+      justify-content: center;
+    }
+    .container {
+      display: flex;
+      width: 960px;
+    }
+    .auth-link {
+      height: 40px;
+      margin-right: 16px;
+      vertical-align: middle;
+    }
+    </style>
   </head>
 
-
-
-  <body style="margin-bottom: 100px;">
+  <body style="">
     <header>
-      <nav class="navbar navbar-default fixed-top navbar-reverse navbar-expand-sm navbar-light bg-light border-bottom-2">
+      <nav class="navbar navbar-default navbar-reverse navbar-expand-sm navbar-light bg-light border-bottom-2">
         <a class="navbar-brand text-dark" href="/directory">{ company logo }</a>
         <div class="collapse navbar-collapse topnav justify-content-end">
           <ul class="nav navbar-nav navbar-right ">       
-      <nav class="navbar navbar-default fixed-top navbar-reverse navbar-expand-sm border-bottom-2">
+      <nav class="navbar navbar-default navbar-reverse navbar-expand-sm border-bottom-2">
       <a class="navbar-brand" href="/"><%= image_tag("click-cloud-bright-blue.png", style: "max-width:70px; margin-top: -7px;") %></a>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,31 +83,22 @@
     
   </body>
 
-  <!-- Footer -->
-    <footer class="page-footer font-small unique-color-dark pt-4">
-        <div class="footer">
-          <ul class="list-unstyled list-inline text-right py-2 mr-4">
-            <li class="list-inline-item">
-              <small class="mb-1 text-white">Built and maintained by student from 
-              <a href="https://www.codecore.ca/">Codecore</a>
-              </small>
-            </li>
-            <li class="list-inline-item float-left ml-4">
-            <% if current_user.present? %>
-              <% link_to(
-                'Sign Out',
-                session_path, 
-                method: :delete
-              ) %>
-            <% else %>
-              <a href="#!" class="btn btn-outline-light">Sign Up</a>
-              <a href="#!" class="btn btn-outline-light">Sign In</a>
-              <a href="#!" class="btn btn-outline-light">Sign Out</a>
-            <% end %>
-              <a href="#!" class="btn btn-outline-light">About</a>
-            </li>
-          </ul>
-        </div>
-    </footer>
+<!--Footer-->
+  
+  <footer>
+    <div class="container bottom-links">
+      <% if current_user.present? %>
+        <%= link_to(
+          'Sign Out',
+          session_path, 
+          method: :delete, 
+          class:"btn btn-outline-light"
+        ) %>
+      <% else %>
+        <a href="/users/new" class="btn btn-outline-light auth-link">Sign Up</a>
+        <a href="/session/new" class="btn btn-outline-light auth-link">Sign In</a>
+      <% end %>
+    </div>
+  </footer>
     
 </html>
