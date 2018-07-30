@@ -1,5 +1,6 @@
 class DirectoriesController < ApplicationController
     def index
+
         @filterrific = initialize_filterrific(
             Company,
             params[:filterrific],
@@ -18,6 +19,7 @@ class DirectoriesController < ApplicationController
         respond_to do |format|
             format.html
             format.js
+
         end
     end
 

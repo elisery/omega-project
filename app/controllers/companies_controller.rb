@@ -49,10 +49,5 @@ class CompaniesController < ApplicationController
         params.require(:company).permit(:name, :address, :overview, :number_employees, :tech_team_size, :website_url, :twitter, :logo_url, :manager, :published, tag_ids: [])
     end
 
-    def authorize_admin!
-        unless current_user.admin?
-        flash[:danger] = "Access Denied"
-        redirect_to home_path
-        end
-    end
+    
 end
