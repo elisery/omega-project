@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     post '/admin/events', to: '/admin/events#index'
     resources :technologies, only: [:index, :create, :destroy]
     post '/admin/technologies', to: '/admin/technologies#index'
-    resources :organizations
+    resources :organizations, only: [:index, :destroy]
     resources :users, only: [:index, :edit, :update, :destroy]
   end
 
